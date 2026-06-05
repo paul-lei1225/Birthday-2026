@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Andrea!</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <header class="hero">
+  <p class="tag">June 10, 2026</p>
+      <h1>
+        Happy Birthday,
+  <span class="name">Andrea</span>!
+      </h1>
+      <p class="subtitle">
+        A fun (and longer lasting) version of a birthday card for my favorite baby in the universe.
+      </p>
+      <button id="surpriseBtn" class="primary">Tap for a surprise</button>
+      <p id="surpriseMessage" class="surprise hidden">
+        You make every day more fun than the last and I am the love you with all of my hearttt. 
+      </p>
+      <div id="surpriseContent" class="hidden">
+        <section class="card">
+          <h2>Birthday wishes</h2>
+          <ol class="wishes">
+            <li>A year packed with fun and adventure.</li>
+            <li>Extra love and kisses for my sweetest baby.</li>
+            <li>Getting to spend each and every day with my baby grill :).</li>
+          </ol>
+        </section>
+
+        <section class="card">
+          <h2>Why I love you</h2>
+          <ul class="reasons">
+            <li>Your laugh makes me smile so big.</li>
+            <li>You make every moment magical.</li>
+            <li>Your kindness makes everyone around you feel seen.</li>
+            <li>I couldn't ask for a sweeter baby.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Favorite moments :)</h2>
+          <div class="moment-grid">
+            <article class="moment">
+              <h3>Running together on the beach, eating bagels in the morning and walking together</h3>
+              <p>We got to play around in the water and when I think back to perfect days it reminds me of the sun shinning.</p>
+            </article>
+            <article class="moment">
+              <h3>Trying new foods in Malaysia</h3>
+              <p>When you took me all over your home and your city I had such a great time getting to try everyhting and getitng to know you more made me so happy to be with such a special baby.</p>
+            </article>
+            <article class="moment">
+              <h3>Crabby Crabs</h3>
+              <p>Even though you thought I was so angry, getting the crabby crabs and seeing your smile made me sososo happy you have no ideaaaa.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <!-- Keypad Modal -->
+    <div id="keypadModal" class="keypad-modal hidden">
+      <div class="keypad-container">
+        <button class="keypad-close" onclick="closeKeypad()">✕</button>
+        <h2 id="keypadTitle">Enter Code</h2>
+        <p id="keypadMessage" class="keypad-message"></p>
+        <div class="code-display">
+          <span id="codeDisplay" class="code-dots">● ● ● ● ● ●</span>
+        </div>
+        <div class="keypad">
+          <button onclick="addDigit('1')">1</button>
+          <button onclick="addDigit('2')">2</button>
+          <button onclick="addDigit('3')">3</button>
+          <button onclick="addDigit('4')">4</button>
+          <button onclick="addDigit('5')">5</button>
+          <button onclick="addDigit('6')">6</button>
+          <button onclick="addDigit('7')">7</button>
+          <button onclick="addDigit('8')">8</button>
+          <button onclick="addDigit('9')">9</button>
+          <button onclick="addDigit('0')">0</button>
+          <button onclick="backspace()" class="keypad-backspace">⌫</button>
+          <button onclick="submitCode()" class="keypad-enter">ENTER</button>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <section class="card" id="fortuneSection">
+        <div id="fortuneLocked" class="locked-message">
+          <p>🔒 Unlock on June 6</p>
+          <p style="font-size: 0.9rem; margin-top: 8px;">Click to enter code</p>
+          <button class="unlock-btn" onclick="openKeypad('fortune')">Unlock</button>
+        </div>
+        <div id="fortuneContent" class="hidden">
+          <h2>🔮 Crystal Ball Fortune</h2>
+          <p style="text-align: center; margin-bottom: 24px; color: #666;">Ask the spirits what the year holds for you...</p>
+          <div class="fortune-teller">
+            <button class="crystal-ball-btn" onclick="revealFortune()">🔮</button>
+          </div>
+          <div id="fortuneDisplay" class="fortune-display hidden">
+            <p id="fortuneText" class="fortune-text"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="soundtrackSection">
+        <div id="soundtrackLocked" class="locked-message">
+          <p>🔒 Unlock on June 7</p>
+          <p style="font-size: 0.9rem; margin-top: 8px;">Click to enter code</p>
+          <button class="unlock-btn" onclick="openKeypad('soundtrack')">Unlock</button>
+        </div>
+        <div id="soundtrackContent" class="hidden">
+          <h2>🎵 Birthday Soundtrack</h2>
+          <p>A little music to set the mood:</p>
+          <audio controls style="width: 100%; margin-top: 12px;">
+            <source src="Katy Perry - Birthday.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <p style="font-size: 0.9rem; color: #999; margin-top: 12px;"" with your music file path</p>
+        </div>
+      </section>
+
+      <section class="card" id="photosSection">
+        <div id="photosLocked" class="locked-message">
+          <p>🔒 Unlock on June 8</p>
+          <p style="font-size: 0.9rem; margin-top: 8px;">Click to enter code</p>
+          <button class="unlock-btn" onclick="openKeypad('photos')">Unlock</button>
+        </div>
+        <div id="photosContent" class="hidden">
+          <h2>📸 Our Favorite Moments</h2>
+          <div class="photo-grid">
+            <div class="photo-placeholder">
+              <img src="CCE1CAF5-E754-4F9F-AF2B-C7075061938F.JPG" alt="Memory 1" />
+            </div>
+            <div class="photo-placeholder">
+              <img src="4B53B4EA-D6E1-4735-910E-CE0AC3FB60FB_4_5005_c.jpeg" alt="Memory 2" />
+            </div>
+            <div class="photo-placeholder">
+              <img src="324CD146-600F-485D-B13C-E2E65782BCFF.JPG" alt="Memory 3" />
+            </div>
+            <div class="photo-placeholder">
+              <img src="8A9D85D9-589C-4AC9-A8C8-673EDB124EF2_4_5005_c.jpeg" alt="Memory 4" />
+            </div>
+          </div>
+          <p style="font-size: 0.9rem; color: #999; margin-top: 12px;">Replace image paths with your photo files</p>
+        </div>
+      </section>
+
+      <section class="card" id="letterSection">
+        <div id="letterLocked" class="locked-message">
+          <p>🔒 Unlock on June 9</p>
+          <p style="font-size: 0.9rem; margin-top: 8px;">Click to enter code</p>
+          <button class="unlock-btn" onclick="openKeypad('letter')">Unlock</button>
+        </div>
+        <div id="letterContent" class="hidden">
+          <h2>💌 A Letter For You</h2>
+          <div class="envelope" id="envelope">
+            <div class="envelope-front">
+              <p class="envelope-text">Open me 💌</p>
+            </div>
+          </div>
+          <div id="letterTextContent" class="letter-content hidden">
+            <div class="letter">
+              <p class="letter-greeting">HAPPY BIRTHDAY TO THE COOLEST PERSON ALIVE!!!</p>
+              <p>I still can't believe you said yes to me. Like, actually agreed to spend your time with this guy. Best decision you ever made (JK). But seriously, meeting you changed everything. You made my life infinitely better just by existing in it. Every day with you is my favorite day. You make me laugh when I'm sad, you believe in me when I doubt myself, and you somehow love me even when I'm being very silly (which is all the time).</p>
+              <p>On your birthday, I want to remind you that you're AMAZING. Like, the mosteseriously incredible. You deserve cake, flowers, endless hugs, and someone (me!) who will never stop being grateful for you. Here's to another year of us being absolutely ridiculous together. I love you so much it's embarrassing. Happy Birthday, you absolute legend! 🎉</p>
+              <p>I promise to love you, cherish you, and make you smile for as long as you'll have me. You are my forever person.</p>
+              <p class="letter-closing">Your biggest fan & favorite human,<br><strong>Pauley</strong></p>
+              <button class="close-letter" onclick="document.getElementById('letterTextContent').classList.add('hidden')">Close Letter</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="giftSection">
+        <div id="giftLocked" class="locked-message">
+          <p>🔒 Unlock on June 10 (Birthday!)</p>
+          <p style="font-size: 0.9rem; margin-top: 8px;">Click to enter code</p>
+          <button class="unlock-btn" onclick="openKeypad('gift')">Unlock</button>
+        </div>
+        <div id="giftContent" class="hidden">
+          <h2>🎁 Your Special Gift</h2>
+          <p>Surprise! Your gift awaits!</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>With all my love, <strong>Pauley</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
